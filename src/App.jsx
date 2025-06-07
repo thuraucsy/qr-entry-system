@@ -9,7 +9,9 @@ const App = () => {
     if (!isVisible) {
       console.log("Scanned QR Code:", decodedText);
       setDecodedText(decodedText);
-      setIsVisible(true);
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 1000); // Delay to allow the scanner to stop before showing the result 
     }
   };
 
