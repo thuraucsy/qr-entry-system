@@ -18,9 +18,13 @@ const App = () => {
     window.location.reload()
   }
 
+  const flagClick = () => {
+    window.open("https://docs.google.com/spreadsheets/d/1Eb1IRArcai5KaRhj3CaYIqForxfFifN4R5I91oXtgdo/", "_blank");
+  }
+
   return (
     <div>
-      <img src="/okinawa_flag.svg" alt="Okinawa flag" width="30%" />
+      <img src="/okinawa_flag.svg" alt="Okinawa flag" width="30%" onClick={flagClick}/>
       <h1><span class="red">Okinawa</span> QR Entry<span class="red">System</span></h1>
       
       <div className={isVisible ? "hidden" : "visible"}>
