@@ -9,14 +9,13 @@ const App = () => {
     if (!isVisible) {
       console.log("Scanned QR Code:", decodedText);
       setDecodedText(decodedText);
-      setTimeout(() => {
-        setIsVisible(true);
-      }, 1000); // Delay to allow the scanner to stop before showing the result 
+      setIsVisible(true);
     }
   };
 
   const backToScan = () => {
-    setIsVisible(false);
+    // setIsVisible(false);
+    window.location.reload()
   }
 
   return (
