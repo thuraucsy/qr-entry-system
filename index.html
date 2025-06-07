@@ -9,22 +9,6 @@
 </head>
 
 <body>
-
-
-
-  <script src="https://unpkg.com/html5-qrcode"></script>
-  <h1>Scan QR Code</h1>
-  <div id="qr-reader"></div>
-  <p>Result: <span id="qr-result"></span></p>
-
-  <script>
-    function onScanSuccess(decodedText) {
-      document.getElementById("qr-result").textContent = decodedText;
-    }
-
-    let qrScanner = new Html5QrcodeScanner("qr-reader", { fps: 10, qrbox: 250 });
-    qrScanner.render(onScanSuccess);
-  </script>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
 </body>
