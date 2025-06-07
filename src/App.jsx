@@ -6,14 +6,14 @@ const App = () => {
   const [decodedText, setDecodedText] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const handleScan = (decodedText) => {
-    console.log("Scanned QR Code:", decodedText);
-    setDecodedText(decodedText);
-    setTimeout(() => {
+    if (!isVisible) {
+      console.log("Scanned QR Code:", decodedText);
+      setDecodedText(decodedText);
       setIsVisible(true);
-    }, 1000);
+    }
   };
 
-  const backToScan  = () => {
+  const backToScan = () => {
     setIsVisible(false);
   }
 
@@ -25,7 +25,7 @@ const App = () => {
       </div>
 
       <div className={isVisible ? "visible" : "hidden"}>
-        <p> {decodedText} <br/> <button onClick={backToScan}>Back</button></p>
+        <p> {decodedText} <br /> <button onClick={backToScan}>Back</button></p>
       </div>
     </div>
   );
