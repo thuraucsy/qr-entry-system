@@ -5,18 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/Download';
 import QRGenerator from "./QRGenerator.jsx";
 import Swal from "sweetalert2";
-
-const API_KEY = "AIzaSyBIAe6vFpQnxgSeVGXwwu3ESvbS8miyhGE";
-const SPREADSHEET_ID = "1Eb1IRArcai5KaRhj3CaYIqForxfFifN4R5I91oXtgdo";
-const SHEET_NAME = "Sheet1";
-
-const fetchSheetData = async () => {
-    const url = `https://sheets.googleapis.com/v4/spreadsheets/${SPREADSHEET_ID}/values/${SHEET_NAME}?key=${API_KEY}`;
-    const response = await fetch(url);
-    const data = await response.json();
-    console.log("Fetched data:", data);
-    return data.values;
-};
+import { fetchSheetData } from "./utils.js"; // Adjust the import path as necessary
 
 const downloadQR = (event, setQrGeneratorValue) => {
     const rows = JSON.parse(event.currentTarget.getAttribute("data-param-rows"));
