@@ -28,8 +28,10 @@ const downloadQR = (event, setQrGeneratorValue) => {
 
     if (rows[qrno]) {
         setQrGeneratorValue(rows[qrno][2]); // Assuming the QR code value is in the third column (index 2)
+        setTimeout(() => saveSvgAsImage(qrno + ".png"), 500);
+
         Swal.fire({
-            text: "QR Code generated successfully",
+            text: "QR Code downloaded successfully",
             icon: "success",
         });
     } else {
@@ -40,17 +42,39 @@ const downloadQR = (event, setQrGeneratorValue) => {
     }
 }
 
+function saveSvgAsImage(imgName = "svg-image.png") {
+    const svgElement = document.getElementById("my-svg");
+    const svgData = new XMLSerializer().serializeToString(svgElement);
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const img = new Image();
+
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        ctx.drawImage(img, 0, 0);
+        const pngData = canvas.toDataURL("image/png");
+
+        // Create a download link
+        const link = document.createElement("a");
+        link.href = pngData;
+        link.download = imgName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
+    img.src = "data:image/svg+xml;base64," + btoa(svgData);
+}
+
 export default function QrDownload() {
     const [rows, setRows] = useState([]);
-    const [qrNo, setQrNo] = useState(123);
-    const [qrGeneratorVal, setQrGeneratorValue] = useState(123);
+    const [qrNo, setQrNo] = useState("");
+    const [qrGeneratorVal, setQrGeneratorValue] = useState("");
 
     useEffect(() => {
         fetchSheetData().then(setRows);
     }, []);
-
-
-    fetchSheetData();
 
     return (
         <Box>
@@ -61,25 +85,24 @@ export default function QrDownload() {
                 customInput={TextField}
                 size="small"
                 variant="outlined"
-                // sx={{ width: '30ch' }}
-                thousandSeparator=","
                 type="tel"
                 value={qrNo}
+                onChange={(e) => setQrNo(e.target.value)}
             />
             <IconButton>
-                <DownloadIcon className="downloadIcon" onClick={(event) => downloadQR(event, setQrGeneratorValue)} data-param-rows={JSON.stringify(rows)} data-param-qrno={qrNo} onChange={(e) => setQrNo(e.target.value)} />
+                <DownloadIcon className="downloadIcon" onClick={(event) => downloadQR(event, setQrGeneratorValue)} data-param-rows={JSON.stringify(rows)} data-param-qrno={qrNo} />
             </IconButton>
 
-            <QRGenerator value={qrGeneratorVal} setValue={setQrGeneratorValue} />
+            {qrGeneratorVal && <QRGenerator value={qrGeneratorVal} />}
 
-            <div>
+            {/* <div>
                 <h1>Google Sheets Data</h1>
                 <ul>
                     {rows.map((row, index) => (
                         <li key={index}>{JSON.stringify(row)}</li>
                     ))}
                 </ul>
-            </div>
+            </div> */}
         </Box>
     );
 }
