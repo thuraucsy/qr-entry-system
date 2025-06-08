@@ -5,7 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import DownloadIcon from '@mui/icons-material/Download';
 import QRGenerator from "./QRGenerator.jsx";
 import Swal from "sweetalert2";
-import { fetchSheetData } from "./utils.js"; // Adjust the import path as necessary
+import { fetchSheetData } from "./utils.js";
 
 const downloadQR = (event, setQrGeneratorValue) => {
     const rows = JSON.parse(event.currentTarget.getAttribute("data-param-rows"));
