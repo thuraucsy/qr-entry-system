@@ -17,6 +17,7 @@ const downloadQR = (event, setQrGeneratorValue) => {
     console.log("rows[qrno]:", rows[qrno]);
 
     if (rows[qrno]) {
+        document.querySelector("meta[name=viewport]").setAttribute("content", "width=500");
         setQrGeneratorValue(rows[qrno][2]); // Assuming the QR code value is in the third column (index 2)
         setTimeout(() => saveSvgAsImage(qrno + ".png"), 1000);
 
