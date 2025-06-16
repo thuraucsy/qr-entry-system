@@ -20,10 +20,7 @@ export default function Home() {
                 const filterQrRow = rows.filter(row => row.includes(decodedText))
                 setQrRow(filterQrRow);
                 if (filterQrRow[0][1] && filterQrRow[0][1] === 'yes') {
-                    Swal.fire({
-                        text: "Already checked in",
-                        icon: "warning",
-                    });
+                    alert("already checked in");
                 }
             });
 
