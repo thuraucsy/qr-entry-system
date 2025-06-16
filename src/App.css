@@ -73,11 +73,19 @@
 }
 
 .qr-generator {
-  padding: 40px; 
-  background: white; 
-  margin: 20px auto; 
-  max-width: 400px; 
-  text-align: center; 
-  border-radius: 8px; 
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 40px;
+  background: #eee;
+  margin: 20px auto;
+  max-width: 460px;
+  height: 800px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-image: url("poster.jpg");
+  opacity: 0.7;
+  overflow: visible;
+}
+
+.qr-generator .scan-to-check-in {
+  margin: 0 auto;
 }
