@@ -2,7 +2,6 @@ import { Box, Typography, Card, CardContent } from "@mui/material";
 import QrScanner from "./QrScanner.jsx";
 import { useState } from "react";
 import { fetchSheetData } from "./utils.js";
-import Swal from "sweetalert2";
 
 export default function Home() {
     const [decodedText, setDecodedText] = useState(false);
@@ -20,8 +19,8 @@ export default function Home() {
                 const filterQrRow = rows.filter(row => row.includes(decodedText))
                 setQrRow(filterQrRow);
                 if (filterQrRow[0][1] && filterQrRow[0][1] === 'yes') {
-                    alert("already checked in");
-                    return;
+                    // alert("already checked in");
+                    // return;
                 }
             });
 
