@@ -21,6 +21,7 @@ export default function Home() {
                 setQrRow(filterQrRow);
                 if (filterQrRow[0][1] && filterQrRow[0][1] === 'yes') {
                     alert("already checked in");
+                    return;
                 }
             });
 
