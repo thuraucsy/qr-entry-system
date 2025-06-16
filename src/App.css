@@ -89,3 +89,7 @@
 .qr-generator .scan-to-check-in {
   margin: 0 auto;
 }
+
+.qr-generator p {
+  color: white;
+}
