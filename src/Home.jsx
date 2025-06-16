@@ -64,7 +64,7 @@ export default function Home() {
                                     <Typography variant="h5" component="div">
                                         No{bull}{qrRow[0][0]}
                                     </Typography>
-                                    <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>Check In: {(!qrRow[0][1] || qrRow[0][1] == 'no') ? "OK" : "NG"}</Typography>
+                                    <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>Check In: {(!qrRow[0][1] || qrRow[0][1] == 'no') ? <span className="okTxt">OK</span> : <span className="ngTxt">NG</span>}</Typography>
                                     {qrRow[0][3] && <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>Buyer name: {qrRow[0][3]}</Typography>}
                                     {qrRow[0][4] && <Typography variant="body2">
                                         No. of persons: {qrRow[0][4]}<br />

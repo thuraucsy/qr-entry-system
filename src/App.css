@@ -93,3 +93,11 @@
 .qr-generator p {
   color: white;
 }
+
+.okTxt {
+  color: green;
+}
+
+.ngTxt {
+  color: red;
+}
